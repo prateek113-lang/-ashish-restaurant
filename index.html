@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashish Restaurant</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:#0b0b0b;
+  color:#fff;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#111;
+  border-bottom:1px solid #c9a227;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.logo{
+  color:#d4af37;
+  font-size:22px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:15px;
+  font-size:14px;
+}
+
+nav a:hover{
+  color:#d4af37;
+}
+
+.hero{
+  min-height:70vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:30px;
+  background:
+    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
+    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+}
+
+.hero h1{
+  font-size:48px;
+  color:#d4af37;
+  margin-bottom:15px;
+}
+
+.hero p{
+  max-width:650px;
+  margin:auto;
+  color:#ddd;
+  font-size:18px;
+  line-height:1.6;
+}
+
+.btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:13px 25px;
+  background:#d4af37;
+  color:#111;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+section{
+  padding:55px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+.title{
+  text-align:center;
+  color:#d4af37;
+  font-size:32px;
+  margin-bottom:30px;
+}
+
+.menu-grid,
+.rooms-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:#151515;
+  border:1px solid #333;
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 5px 20px rgba(0,0,0,.4);
+}
+
+.card h3{
+  color:#d4af37;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#ccc;
+  line-height:1.5;
+}
+
+.price{
+  margin-top:15px;
+  font-size:20px;
+  color:#fff;
+  font-weight:bold;
+}
+
+.status{
+  display:inline-block;
+  margin-top:12px;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:13px;
+  background:#1d6b36;
+}
+
+.status.booked{
+  background:#8b2222;
+}
+
+.status.maintenance{
+  background:#765b16;
+}
+
+form{
+  max-width:650px;
+  margin:auto;
+  background:#151515;
+  padding:25px;
+  border-radius:15px;
+  border:1px solid #333;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  margin:8px 0 15px;
+  background:#0d0d0d;
+  border:1px solid #444;
+  color:white;
+  border-radius:7px;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  background:#d4af37;
+  border:0;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#f0ca45;
+}
+
+.message{
+  text-align:center;
+  margin-top:15px;
+  color:#d4af37;
+}
+
+footer{
+  text-align:center;
+  padding:30px;
+  border-top:1px solid #333;
+  color:#aaa;
+}
+
+.loading{
+  text-align:center;
+  color:#aaa;
+  padding:30px;
+}
+
+.error{
+  text-align:center;
+  color:#ff7777;
+  padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">ASHISH RESTAURANT</div>
+
+  <nav>
+    <a href="#menu">Menu</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#booking">Booking</a>
+  </nav>
+</header>
+
+
+<section class="hero">
+  <div>
+    <h1>The Grand Royale</h1>
+    <p>
+      Premium dining, comfortable rooms and a simple online booking
+      experience at Ashish Restaurant.
+    </p>
+
+    <a href="#booking" class="btn">Book a Room</a>
+  </div>
+</section>
+
+
+<section id="menu">
+  <h2 class="title">Our Menu</h2>
+
+  <div class="menu-grid">
+
+    <div class="card">
+      <h3>Restaurant Special</h3>
+      <p>Freshly prepared special dish.</p>
+      <div class="price">₹250</div>
+    </div>
+
+    <div class="card">
+      <h3>Paneer Special</h3>
+      <p>Delicious paneer preparation.</p>
+      <div class="price">₹220</div>
+    </div>
+
+    <div class="card">
+      <h3>Family Meal</h3>
+      <p>Perfect meal for family and friends.</p>
+      <div class="price">₹450</div>
+    </div>
+
+  </div>
+</section>
+
+
+<section id="rooms">
+  <h2 class="title">Available Rooms</h2>
+
+  <div id="roomsContainer">
+    <div class="loading">Rooms load ho rahe hain...</div>
+  </div>
+</section>
+
+
+<section id="booking">
+
+  <h2 class="title">Room Booking</h2>
+
+  <form id="bookingForm">
+
+    <label>Guest Name</label>
+    <input
+      type="text"
+      id="guestName"
+      placeholder="Enter guest name"
+      required
+    >
+
+    <label>Mobile Number</label>
+    <input
+      type="tel"
+      id="mobile"
+      placeholder="Enter mobile number"
+      required
+    >
+
+    <label>Number of Guests</label>
+    <input
+      type="number"
+      id="guests"
+      min="1"
+      value="1"
+      required
+    >
+
+    <label>Select Room</label>
+    <select id="roomId" required>
+      <option value="">Loading rooms...</option>
+    </select>
+
+    <label>Check-in</label>
+    <input type="date" id="checkin" required>
+
+    <label>Check-out</label>
+    <input type="date" id="checkout" required>
+
+    <button type="submit">Submit Booking</button>
+
+    <div class="message" id="bookingMessage"></div>
+
+  </form>
+
+</section>
+
+
+<footer>
+  <p>© 2026 Ashish Restaurant. All Rights Reserved.</p>
+</footer>
+
+
+<script>
+
+/* ==============================
+   SUPABASE CONFIGURATION
+================================ */
+
+const SUPABASE_URL =
+"https://jddaqsfonmumknbbflwq.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_pvM4xfAPz0daJGR3PYDVEQ_junwtd6k";
+
+
+const headers = {
+  "apikey": SUPABASE_KEY,
+  "Authorization": "Bearer " + SUPABASE_KEY,
+  "Content-Type": "application/json"
+};
+
+
+/* ==============================
+   LOAD ROOMS
+================================ */
+
+async function loadRooms(){
+
+  const roomsContainer =
+    document.getElementById("roomsContainer");
+
+  const roomSelect =
+    document.getElementById("roomId");
+
+  try{
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/rooms?select=id,room_no,name,price,status&order=room_no.asc",
+      {
+        method:"GET",
+        headers:headers
+      }
+    );
+
+    if(!response.ok){
+
+      const errorText = await response.text();
+
+      throw new Error(errorText);
+    }
+
+    const rooms = await response.json();
+
+    if(!rooms || rooms.length === 0){
+
+      roomsContainer.innerHTML =
+        '<div class="error">Koi room nahi mila.</div>';
+
+      roomSelect.innerHTML =
+        '<option value="">No rooms available</option>';
+
+      return;
+    }
+
+
+    /* ROOM CARDS */
+
+    roomsContainer.innerHTML = "";
+
+    rooms.forEach(room => {
+
+      let statusClass = "";
+
+      if(
+        String(room.status).toLowerCase() === "booked"
+      ){
+        statusClass = "booked";
+      }
+
+      if(
+        String(room.status).toLowerCase() === "maintenance"
+      ){
+        statusClass = "maintenance";
+      }
+
+      const card = document.createElement("div");
+
+      card.className = "card";
+
+      card.innerHTML = `
+        <h3>Room ${room.room_no}</h3>
+
+        <p>${room.name || "Room"}</p>
+
+        <div class="price">
+          ₹${room.price} / night
+        </div>
+
+        <span class="status ${statusClass}">
+          ${room.status}
+        </span>
+      `;
+
+      roomsContainer.appendChild(card);
+
+    });
+
+
+    /* BOOKING DROPDOWN */
+
+    roomSelect.innerHTML =
+      '<option value="">Select Available Room</option>';
+
+
+    rooms.forEach(room => {
+
+      if(
+        String(room.status).toLowerCase() === "available"
+      ){
+
+        const option =
+          document.createElement("option");
+
+        option.value = room.id;
+
+        option.textContent =
+          "Room " +
+          room.room_no +
+          " - " +
+          room.name +
+          " - ₹" +
+          room.price;
+
+        roomSelect.appendChild(option);
+      }
+
+    });
+
+
+  }catch(error){
+
+    console.error(error);
+
+    roomsContainer.innerHTML =
+      '<div class="error">Rooms could not be loaded.</div>';
+
+    roomSelect.innerHTML =
+      '<option value="">Rooms load nahi ho paaye</option>';
+  }
+
+}
+
+
+/* ==============================
+   BOOK ROOM
+================================ */
+
+document
+.getElementById("bookingForm")
+.addEventListener("submit", async function(e){
+
+  e.preventDefault();
+
+  const message =
+    document.getElementById("bookingMessage");
+
+  message.textContent =
+    "Booking submit ho rahi hai...";
+
+
+  const roomId =
+    document.getElementById("roomId").value;
+
+  const guestName =
+    document.getElementById("guestName").value.trim();
+
+  const mobile =
+    document.getElementById("mobile").value.trim();
+
+  const guests =
+    Number(document.getElementById("guests").value);
+
+  const checkin =
+    document.getElementById("checkin").value;
+
+  const checkout =
+    document.getElementById("checkout").value;
+
+
+  if(!roomId){
+
+    message.textContent =
+      "Please room select karein.";
+
+    return;
+  }
+
+
+  const bookingData = {
+
+    room_id: Number(roomId),
+
+    guest_name: guestName,
+
+    mobile: mobile,
+
+    guests: guests,
+
+    checkin: checkin,
+
+    checkout: checkout,
+
+    status: "Pending"
+
+  };
+
+
+  try{
+
+    const response = await fetch(
+      SUPABASE_URL +
+      "/rest/v1/bookings",
+      {
+        method:"POST",
+
+        headers:{
+          ...headers,
+          "Prefer":"return=minimal"
+        },
+
+        body:JSON.stringify(bookingData)
+      }
+    );
+
+
+    if(!response.ok){
+
+      const errorText =
+        await response.text();
+
+      throw new Error(errorText);
+    }
+
+
+    message.textContent =
+      "✅ Booking successfully submit ho gayi!";
+
+
+    document
+    .getElementById("bookingForm")
+    .reset();
+
+
+  }catch(error){
+
+    console.error(error);
+
+    message.textContent =
+      "❌ Booking submit nahi hui. Supabase permissions/RLS check karein.";
+
+  }
+
+});
+
+
+/* START */
+
+loadRooms();
+
+</script>
+
+</body>
+</html>
