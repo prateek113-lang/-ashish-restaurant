@@ -391,45 +391,42 @@ async function loadRooms(){
 
     /* ROOM CARDS */
 
-    roomsContainer.innerHTML = "";
-
-    rooms.forEach(room => {
-
-      let statusClass = "";
+        rooms.forEach(room => {
 
       if(
-        String(room.status).toLowerCase() === "booked"
+        String(room.status).toLowerCase() === "available"
       ){
-        statusClass = "booked";
+
+        const option =
+          document.createElement("option");
+
+        option.value = room.id;
+
+        option.textContent =
+          "Room " +
+          room.room_no +
+          " - " +
+          room.name +
+          " - ₹" +
+          room.price;
+
+        roomSelect.appendChild(option);
       }
-
-      if(
-        String(room.status).toLowerCase() === "maintenance"
-      ){
-        statusClass = "maintenance";
-      }
-
-      const card = document.createElement("div");
-
-      card.className = "card";
-
-      card.innerHTML = `
-        <h3>Room ${room.room_no}</h3>
-
-        <p>${room.name || "Room"}</p>
-
-        <div class="price">
-          ₹${room.price} / night
-        </div>
-
-        <span class="status ${statusClass}">
-          ${room.status}
-        </span>
-      `;
-
-      roomsContainer.appendChild(card);
 
     });
+
+  } catch(error){
+
+    console.error(error);
+
+    roomsContainer.innerHTML =
+      '<div class="error">' + error.message + '</div>';
+
+    roomSelect.innerHTML =
+      '<option value="">Rooms load nahi ho paaye</option>';
+  }
+
+}
 
 
     /* BOOKING DROPDOWN */
