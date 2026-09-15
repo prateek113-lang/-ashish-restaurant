@@ -348,8 +348,8 @@ const headers = {
 /* ==============================
    LOAD ROOMS
 ================================ */
-
-async function loadRooms(){
+console.log("LOAD ROOMS START");
+async function loadRooms(const response = await fetch){console.log("FETCH COMPLETE");
 
   const roomsContainer =
     document.getElementById("roomsContainer");
