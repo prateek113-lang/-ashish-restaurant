@@ -463,12 +463,12 @@ async function loadRooms(){
     });
 
 
-  }catch(error){
+  catch(error){
 
     console.error(error);
 
     roomsContainer.innerHTML =
-      '<div class="error">Rooms could not be loaded.</div>';
+      '<div class="error">' + error.message + '</div>';
 
     roomSelect.innerHTML =
       '<option value="">Rooms load nahi ho paaye</option>';
