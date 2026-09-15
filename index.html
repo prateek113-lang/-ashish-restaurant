@@ -3,148 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Ashish Restaurant</title>
 
 <style>
+
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:Arial, sans-serif;
+  font-family:Arial,sans-serif;
 }
 
 body{
   background:#0b0b0b;
-  color:#fff;
+  color:white;
 }
 
 header{
-  position:sticky;
-  top:0;
-  z-index:1000;
   background:#111;
-  border-bottom:1px solid #c9a227;
-  padding:15px 20px;
+  border-bottom:1px solid #b88a2a;
+  padding:18px 6%;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
 .logo{
-  color:#d4af37;
-  font-size:22px;
+  font-size:24px;
   font-weight:bold;
+  color:#d6ad55;
+  letter-spacing:2px;
 }
 
 nav a{
   color:white;
   text-decoration:none;
-  margin-left:15px;
-  font-size:14px;
+  margin-left:20px;
 }
 
 nav a:hover{
-  color:#d4af37;
+  color:#d6ad55;
 }
 
 .hero{
   min-height:70vh;
   display:flex;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:30px;
+  padding:60px 20px;
+
   background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
-    url("https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=80")
-    center/cover;
+  radial-gradient(
+    circle at center,
+    #2a210f 0,
+    #0b0b0b 55%
+  );
 }
 
 .hero h1{
-  font-size:48px;
-  color:#d4af37;
-  margin-bottom:15px;
+  font-size:clamp(42px,8vw,78px);
+  color:#d6ad55;
+  margin-bottom:12px;
 }
 
 .hero p{
-  max-width:650px;
-  margin:auto;
+  font-size:20px;
   color:#ddd;
-  font-size:18px;
-  line-height:1.6;
-}
-
-.btn{
-  display:inline-block;
-  margin-top:25px;
-  padding:13px 25px;
-  background:#d4af37;
-  color:#111;
-  text-decoration:none;
-  border-radius:8px;
-  font-weight:bold;
 }
 
 section{
-  padding:55px 20px;
-  max-width:1100px;
+  padding:55px 6%;
+  max-width:1200px;
   margin:auto;
 }
 
 .title{
   text-align:center;
-  color:#d4af37;
-  font-size:32px;
+  color:#d6ad55;
+  font-size:34px;
   margin-bottom:30px;
 }
 
-.menu-grid,
-.rooms-grid{
+.grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  grid-template-columns:
+  repeat(auto-fit,minmax(220px,1fr));
+
   gap:20px;
 }
 
 .card{
   background:#151515;
-  border:1px solid #333;
+  border:1px solid #3a2a12;
   border-radius:14px;
   padding:22px;
-  box-shadow:0 5px 20px rgba(0,0,0,.4);
+  box-shadow:0 8px 25px rgba(0,0,0,.25);
 }
 
 .card h3{
-  color:#d4af37;
-  margin-bottom:10px;
-}
-
-.card p{
-  color:#ccc;
-  line-height:1.5;
+  color:#d6ad55;
+  margin-bottom:8px;
 }
 
 .price{
-  margin-top:15px;
-  font-size:20px;
-  color:#fff;
+  font-size:19px;
   font-weight:bold;
+  margin:12px 0;
 }
 
 .status{
   display:inline-block;
-  margin-top:12px;
-  padding:6px 10px;
+  padding:5px 10px;
   border-radius:20px;
+  background:#1c6b35;
+  color:white;
   font-size:13px;
-  background:#1d6b36;
 }
 
 .status.booked{
-  background:#8b2222;
+  background:#8b2424;
 }
 
 .status.maintenance{
-  background:#765b16;
+  background:#76520e;
+}
+
+.loading,
+.error{
+  padding:20px;
+  text-align:center;
+  background:#151515;
+  border-radius:12px;
+  color:#ddd;
+}
+
+.error{
+  color:#ff9b9b;
+  border:1px solid #7a2222;
 }
 
 form{
@@ -152,184 +152,300 @@ form{
   margin:auto;
   background:#151515;
   padding:25px;
-  border-radius:15px;
-  border:1px solid #333;
+  border-radius:16px;
+  border:1px solid #3a2a12;
 }
 
-input,select{
+label{
+  display:block;
+  margin:13px 0 6px;
+  color:#ddd;
+}
+
+input,
+select{
   width:100%;
   padding:13px;
-  margin:8px 0 15px;
+  border-radius:8px;
+  border:1px solid #555;
   background:#0d0d0d;
-  border:1px solid #444;
   color:white;
-  border-radius:7px;
 }
 
 button{
   width:100%;
+  margin-top:20px;
   padding:14px;
-  background:#d4af37;
   border:0;
   border-radius:8px;
+  background:#d6ad55;
+  color:#111;
   font-weight:bold;
+  font-size:16px;
   cursor:pointer;
 }
 
 button:hover{
-  background:#f0ca45;
+  background:#f0c96d;
 }
 
-.message{
+#bookingMessage{
   text-align:center;
   margin-top:15px;
-  color:#d4af37;
 }
 
 footer{
   text-align:center;
   padding:30px;
-  border-top:1px solid #333;
-  color:#aaa;
+  color:#999;
+  border-top:1px solid #2b2112;
 }
 
-.loading{
-  text-align:center;
-  color:#aaa;
-  padding:30px;
-}
-
-.error{
-  text-align:center;
-  color:#ff7777;
-  padding:30px;
-}
 </style>
 </head>
 
+
 <body>
 
+
 <header>
-  <div class="logo">ASHISH RESTAURANT</div>
+
+  <div class="logo">
+    ASHISH RESTAURANT
+  </div>
 
   <nav>
     <a href="#menu">Menu</a>
     <a href="#rooms">Rooms</a>
     <a href="#booking">Booking</a>
   </nav>
+
 </header>
 
 
+
 <section class="hero">
+
   <div>
-    <h1>The Grand Royale</h1>
+
+    <h1>
+      The Grand Royale
+    </h1>
+
     <p>
-      Premium dining, comfortable rooms and a simple online booking
-      experience at Ashish Restaurant.
+      Luxury dining & comfortable rooms
     </p>
 
-    <a href="#booking" class="btn">Book a Room</a>
   </div>
+
 </section>
+
 
 
 <section id="menu">
-  <h2 class="title">Our Menu</h2>
 
-  <div class="menu-grid">
+  <h2 class="title">
+    Our Menu
+  </h2>
 
-    <div class="card">
-      <h3>Restaurant Special</h3>
-      <p>Freshly prepared special dish.</p>
-      <div class="price">₹250</div>
-    </div>
+  <div class="grid">
+
 
     <div class="card">
-      <h3>Paneer Special</h3>
-      <p>Delicious paneer preparation.</p>
-      <div class="price">₹220</div>
+
+      <h3>
+        Restaurant Special
+      </h3>
+
+      <p>
+        Chef's special dish
+      </p>
+
+      <div class="price">
+        ₹250
+      </div>
+
     </div>
 
+
+
     <div class="card">
-      <h3>Family Meal</h3>
-      <p>Perfect meal for family and friends.</p>
-      <div class="price">₹450</div>
+
+      <h3>
+        Paneer Special
+      </h3>
+
+      <p>
+        Fresh paneer preparation
+      </p>
+
+      <div class="price">
+        ₹220
+      </div>
+
     </div>
+
+
+
+    <div class="card">
+
+      <h3>
+        Family Meal
+      </h3>
+
+      <p>
+        Perfect meal for the family
+      </p>
+
+      <div class="price">
+        ₹450
+      </div>
+
+    </div>
+
 
   </div>
+
 </section>
+
 
 
 <section id="rooms">
-  <h2 class="title">Available Rooms</h2>
+
+  <h2 class="title">
+    Available Rooms
+  </h2>
 
   <div id="roomsContainer">
-    <div class="loading">Rooms load ho rahe hain...</div>
+
+    <div class="loading">
+      Rooms load ho rahe hain...
+    </div>
+
   </div>
+
 </section>
+
 
 
 <section id="booking">
 
-  <h2 class="title">Room Booking</h2>
+  <h2 class="title">
+    Book a Room
+  </h2>
+
 
   <form id="bookingForm">
 
-    <label>Guest Name</label>
+
+    <label for="guestName">
+      Guest Name
+    </label>
+
     <input
-      type="text"
       id="guestName"
-      placeholder="Enter guest name"
+      type="text"
       required
     >
 
-    <label>Mobile Number</label>
+
+
+    <label for="mobile">
+      Mobile Number
+    </label>
+
     <input
-      type="tel"
       id="mobile"
-      placeholder="Enter mobile number"
+      type="tel"
       required
     >
 
-    <label>Number of Guests</label>
+
+
+    <label for="guests">
+      Number of Guests
+    </label>
+
     <input
-      type="number"
       id="guests"
+      type="number"
       min="1"
       value="1"
       required
     >
 
-    <label>Select Room</label>
-    <select id="roomId" required>
-      <option value="">Loading rooms...</option>
+
+
+    <label for="roomId">
+      Select Room
+    </label>
+
+    <select
+      id="roomId"
+      required
+    >
+
+      <option value="">
+        Loading rooms...
+      </option>
+
     </select>
 
-    <label>Check-in</label>
-    <input type="date" id="checkin" required>
 
-    <label>Check-out</label>
-    <input type="date" id="checkout" required>
 
-    <button type="submit">Submit Booking</button>
+    <label for="checkin">
+      Check-in
+    </label>
 
-    <div class="message" id="bookingMessage"></div>
+    <input
+      id="checkin"
+      type="date"
+      required
+    >
+
+
+
+    <label for="checkout">
+      Check-out
+    </label>
+
+    <input
+      id="checkout"
+      type="date"
+      required
+    >
+
+
+
+    <button type="submit">
+      Send Booking Request
+    </button>
+
+
+    <div id="bookingMessage"></div>
+
 
   </form>
 
 </section>
 
 
+
 <footer>
-  <p>© 2026 Ashish Restaurant. All Rights Reserved.</p>
+
+  © 2026 Ashish Restaurant.
+  All rights reserved.
+
 </footer>
+
 
 
 <script>
 
-/* ==============================
-   SUPABASE CONFIGURATION
-================================ */
+
+/* =========================
+   SUPABASE CONFIG
+========================= */
 
 const SUPABASE_URL =
 "https://jddaqsfonmumknbbflwq.supabase.co";
@@ -339,260 +455,507 @@ const SUPABASE_KEY =
 
 
 const headers = {
-  "apikey": SUPABASE_KEY,
-  "Authorization": "Bearer " + SUPABASE_KEY,
-  "Content-Type": "application/json"
+
+  "apikey":
+  SUPABASE_KEY,
+
+  "Authorization":
+  "Bearer " + SUPABASE_KEY,
+
+  "Content-Type":
+  "application/json"
+
 };
 
 
-/* ==============================
+
+/* =========================
    LOAD ROOMS
-================================ */
-console.log("LOAD ROOMS START");
-async function loadRooms(const response = await fetch){console.log("FETCH COMPLETE");
+========================= */
+
+async function loadRooms(){
+
 
   const roomsContainer =
-    document.getElementById("roomsContainer");
+  document.getElementById(
+    "roomsContainer"
+  );
+
 
   const roomSelect =
-    document.getElementById("roomId");
+  document.getElementById(
+    "roomId"
+  );
 
-  try{
 
-   const response = await fetch(
-  SUPABASE_URL +
-  "/rest/v1/rooms?select=id,room_no,name,price,status&order=room_no.asc",
-  {
-    method:"GET",
-    headers:headers
-  }
-);
-
-console.log("FETCH COMPLETE");
-alert("FETCH COMPLETE");
-    if(!response.ok){
-
-      const errorText = await response.text();
-
-      throw new Error(errorText);
-    }
-
-    const rooms = await response.json();
-
-    if(!rooms || rooms.length === 0){
-
-      roomsContainer.innerHTML =
-        '<div class="error">Koi room nahi mila.</div>';
-
-      roomSelect.innerHTML =
-        '<option value="">No rooms available</option>';
-
-      return;
-    }
-
-
-    /* ROOM CARDS */
-
-        rooms.forEach(room => {
-
-      if(
-        String(room.status).toLowerCase() === "available"
-      ){
-
-        const option =
-          document.createElement("option");
-
-        option.value = room.id;
-
-        option.textContent =
-          "Room " +
-          room.room_no +
-          " - " +
-          room.name +
-          " - ₹" +
-          room.price;
-
-        roomSelect.appendChild(option);
-      }
-
-    });
-
-  } catch(error){
-
-    console.error(error);
-
-    roomsContainer.innerHTML =
-      '<div class="error">' + error.message + '</div>';
-
-    roomSelect.innerHTML =
-      '<option value="">Rooms load nahi ho paaye</option>';
-  }
-
-}
-
-
-    /* BOOKING DROPDOWN */
-
-    roomSelect.innerHTML =
-      '<option value="">Select Available Room</option>';
-
-
-    rooms.forEach(room => {
-
-      if(
-        String(room.status).toLowerCase() === "available"
-      ){
-
-        const option =
-          document.createElement("option");
-
-        option.value = room.id;
-
-        option.textContent =
-          "Room " +
-          room.room_no +
-          " - " +
-          room.name +
-          " - ₹" +
-          room.price;
-
-        roomSelect.appendChild(option);
-      }
-
-    });
-
-
-  catch(error){
-
-    console.error(error);
-
-    roomsContainer.innerHTML =
-      '<div class="error">' + error.message + '</div>';
-
-    roomSelect.innerHTML =
-      '<option value="">Rooms load nahi ho paaye</option>';
-  }
-
-}
-
-
-/* ==============================
-   BOOK ROOM
-================================ */
-
-document
-.getElementById("bookingForm")
-.addEventListener("submit", async function(e){
-
-  e.preventDefault();
-
-  const message =
-    document.getElementById("bookingMessage");
-
-  message.textContent =
-    "Booking submit ho rahi hai...";
-
-
-  const roomId =
-    document.getElementById("roomId").value;
-
-  const guestName =
-    document.getElementById("guestName").value.trim();
-
-  const mobile =
-    document.getElementById("mobile").value.trim();
-
-  const guests =
-    Number(document.getElementById("guests").value);
-
-  const checkin =
-    document.getElementById("checkin").value;
-
-  const checkout =
-    document.getElementById("checkout").value;
-
-
-  if(!roomId){
-
-    message.textContent =
-      "Please room select karein.";
-
-    return;
-  }
-
-
-  const bookingData = {
-
-    room_id: Number(roomId),
-
-    guest_name: guestName,
-
-    mobile: mobile,
-
-    guests: guests,
-
-    checkin: checkin,
-
-    checkout: checkout,
-
-    status: "Pending"
-
-  };
+  let timer = null;
 
 
   try{
 
-    const response = await fetch(
+
+    roomsContainer.innerHTML =
+      '<div class="loading">Supabase se rooms connect ho rahe hain...</div>';
+
+
+    console.log(
+      "ROOM FETCH START"
+    );
+
+
+    const controller =
+    new AbortController();
+
+
+    timer =
+    setTimeout(function(){
+
+      controller.abort();
+
+    },10000);
+
+
+
+    const response =
+    await fetch(
+
       SUPABASE_URL +
-      "/rest/v1/bookings",
+
+      "/rest/v1/rooms?select=id,room_no,name,price,status&order=room_no.asc",
+
       {
-        method:"POST",
 
-        headers:{
-          ...headers,
-          "Prefer":"return=minimal"
-        },
+        method:"GET",
 
-        body:JSON.stringify(bookingData)
+        headers:headers,
+
+        signal:
+        controller.signal
+
       }
+
+    );
+
+
+    clearTimeout(timer);
+
+
+    console.log(
+      "FETCH COMPLETE"
     );
 
 
     if(!response.ok){
 
-      const errorText =
-        await response.text();
 
-      throw new Error(errorText);
+      const errorText =
+      await response.text();
+
+
+      throw new Error(
+
+        "Supabase HTTP " +
+        response.status +
+        ": " +
+        errorText
+
+      );
+
     }
 
 
-    message.textContent =
-      "✅ Booking successfully submit ho gayi!";
+
+    const rooms =
+    await response.json();
 
 
-    document
-    .getElementById("bookingForm")
-    .reset();
+    console.log(
+      "ROOM DATA:",
+      rooms
+    );
 
 
-  }catch(error){
 
-    console.error(error);
+    if(
+      !rooms ||
+      rooms.length === 0
+    ){
 
-    message.textContent =
-      "❌ Booking submit nahi hui. Supabase permissions/RLS check karein.";
+      roomsContainer.innerHTML =
+      '<div class="error">Supabase connected, lekin koi room nahi mila.</div>';
+
+      roomSelect.innerHTML =
+      '<option value="">No rooms available</option>';
+
+      return;
+
+    }
+
+
+
+    roomsContainer.innerHTML =
+    "";
+
+
+
+    rooms.forEach(function(room){
+
+
+      let statusClass =
+      "";
+
+
+      const status =
+      String(
+        room.status || ""
+      ).toLowerCase();
+
+
+
+      if(
+        status === "booked"
+      ){
+
+        statusClass =
+        "booked";
+
+      }
+
+
+
+      if(
+        status === "maintenance"
+      ){
+
+        statusClass =
+        "maintenance";
+
+      }
+
+
+
+      const card =
+      document.createElement(
+        "div"
+      );
+
+
+      card.className =
+      "card";
+
+
+
+      card.innerHTML = `
+
+        <h3>
+          Room ${room.room_no}
+        </h3>
+
+        <p>
+          ${room.name || "Room"}
+        </p>
+
+        <div class="price">
+          ₹${room.price} / night
+        </div>
+
+        <span class="status ${statusClass}">
+          ${room.status || "Unknown"}
+        </span>
+
+      `;
+
+
+
+      roomsContainer.appendChild(
+        card
+      );
+
+
+    });
+
+
+
+    roomSelect.innerHTML =
+    '<option value="">Select Available Room</option>';
+
+
+
+    rooms.forEach(function(room){
+
+
+      if(
+        String(
+          room.status || ""
+        ).toLowerCase()
+        ===
+        "available"
+      ){
+
+
+        const option =
+        document.createElement(
+          "option"
+        );
+
+
+        option.value =
+        room.id;
+
+
+        option.textContent =
+
+          "Room " +
+          room.room_no +
+          " - " +
+          (room.name || "Room") +
+          " - ₹" +
+          room.price;
+
+
+
+        roomSelect.appendChild(
+          option
+        );
+
+
+      }
+
+
+    });
+
 
   }
 
-});
+
+  catch(error){
 
 
-/* START */
+    if(timer){
+
+      clearTimeout(timer);
+
+    }
+
+
+    console.error(
+      "ROOM ERROR:",
+      error
+    );
+
+
+
+    let message = "";
+
+
+
+    if(
+      error.name ===
+      "AbortError"
+    ){
+
+      message =
+      "Supabase se 10 seconds tak response nahi aaya.";
+
+    }
+
+    else{
+
+      message =
+      "Rooms load nahi ho paaye: " +
+      error.message;
+
+    }
+
+
+
+    roomsContainer.innerHTML =
+
+      '<div class="error">' +
+      message +
+      '</div>';
+
+
+    roomSelect.innerHTML =
+
+      '<option value="">' +
+      'Rooms load nahi ho paaye' +
+      '</option>';
+
+
+  }
+
+
+}
+
+
+
+/* =========================
+   BOOKING
+========================= */
+
+document
+.getElementById("bookingForm")
+.addEventListener(
+  "submit",
+  async function(e){
+
+    e.preventDefault();
+
+
+    const bookingMessage =
+    document.getElementById(
+      "bookingMessage"
+    );
+
+
+    bookingMessage.textContent =
+    "Booking submit ho rahi hai...";
+
+
+
+    const data = {
+
+      room_id:
+      Number(
+        document.getElementById(
+          "roomId"
+        ).value
+      ),
+
+      guest_name:
+      document.getElementById(
+        "guestName"
+      ).value.trim(),
+
+      mobile:
+      document.getElementById(
+        "mobile"
+      ).value.trim(),
+
+      guests:
+      Number(
+        document.getElementById(
+          "guests"
+        ).value
+      ),
+
+      checkin:
+      document.getElementById(
+        "checkin"
+      ).value,
+
+      checkout:
+      document.getElementById(
+        "checkout"
+      ).value,
+
+      status:
+      "Pending"
+
+    };
+
+
+
+    try{
+
+
+      const response =
+      await fetch(
+
+        SUPABASE_URL +
+        "/rest/v1/bookings",
+
+        {
+
+          method:"POST",
+
+          headers:{
+
+            ...headers,
+
+            "Prefer":
+            "return=representation"
+
+          },
+
+          body:
+          JSON.stringify(data)
+
+        }
+
+      );
+
+
+
+      if(!response.ok){
+
+
+        const errorText =
+        await response.text();
+
+
+        throw new Error(
+
+          "Supabase HTTP " +
+          response.status +
+          ": " +
+          errorText
+
+        );
+
+      }
+
+
+
+      bookingMessage.textContent =
+      "Booking request successfully bhej di gayi.";
+
+
+      document
+      .getElementById(
+        "bookingForm"
+      )
+      .reset();
+
+
+      await loadRooms();
+
+
+    }
+
+
+    catch(error){
+
+
+      console.error(
+        "BOOKING ERROR:",
+        error
+      );
+
+
+      bookingMessage.textContent =
+      "Booking failed: " +
+      error.message;
+
+
+    }
+
+
+  }
+);
+
+
+
+/* =========================
+   START
+========================= */
 
 loadRooms();
 
+
 </script>
+
 
 </body>
 </html>
