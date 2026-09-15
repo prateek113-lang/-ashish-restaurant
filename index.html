@@ -359,14 +359,16 @@ async function loadRooms(const response = await fetch){console.log("FETCH COMPLE
 
   try{
 
-    const response = await fetch(
-      SUPABASE_URL +
-      "/rest/v1/rooms?select=id,room_no,name,price,status&order=room_no.asc",
-      {
-        method:"GET",
-        headers:headers
-      }
-    );
+   const response = await fetch(
+  SUPABASE_URL +
+  "/rest/v1/rooms?select=id,room_no,name,price,status&order=room_no.asc",
+  {
+    method:"GET",
+    headers:headers
+  }
+);
+
+console.log("FETCH COMPLETE");
 
     if(!response.ok){
 
